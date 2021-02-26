@@ -1,4 +1,4 @@
-package RhombusOfStars;
+package rhombusOfStars;
 //created by J.M.
 
 import java.util.*;
