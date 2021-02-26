@@ -12,21 +12,23 @@ public class Main {
 
     }
 
-    static void printRhombus(int n) {
-        printHalfRhombus(n, n, true);
-        printHalfRhombus(n, n - 1, false);
+    private static void printRhombus(int n) {
+        printTriangle(n, true);
+        printTriangle(n, false);
     }
-    private static void printHalfRhombus(int n, int end, boolean isTop) {
-        for (int i = 1; i <= end; i++) {
-            int spacesEnd = isTop ? n - i : i;
-            int starsEnd = isTop ? i : n - i;
-            printRow(spacesEnd, " ");
-            printRow(starsEnd, "* ");
+
+    private static void printTriangle(int n, boolean directionUp) {
+        for (int i = 1; i <= n; i++) {
+            int firstSymbolCount = directionUp ? n - i : i;
+            int secondSymbolCount = directionUp ? i : n - i;
+            printRow(firstSymbolCount, " ");
+            printRow(secondSymbolCount, "* ");
             System.out.println();
         }
     }
-    static void printRow(int end, String symbol) {
-        for (int j = 1; j <= end; j++) {
+
+    private static void printRow(int count, String symbol) {
+        for (int j = 1; j <= count; j++) {
             System.out.print(symbol);
         }
     }
