@@ -2,6 +2,7 @@ package PointInRectangle;
 //created by J.M.
 
 public class Point2D {
+
     private final int x;
     private final int y;
 
