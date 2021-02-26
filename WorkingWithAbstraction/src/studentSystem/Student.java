@@ -1,4 +1,4 @@
-package StudentSystem;
+package studentSystem;
 //created by J.M.
 
 public class Student {
