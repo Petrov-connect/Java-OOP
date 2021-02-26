@@ -1,4 +1,4 @@
-package PointInRectangle;
+package pointInRectangle;
 //created by J.M.
 
 public class Point2D {

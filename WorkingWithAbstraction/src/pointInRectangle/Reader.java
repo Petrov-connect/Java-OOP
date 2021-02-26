@@ -1,4 +1,4 @@
-package PointInRectangle;
+package pointInRectangle;
 //created by J.M.
 
 import java.io.BufferedReader;
