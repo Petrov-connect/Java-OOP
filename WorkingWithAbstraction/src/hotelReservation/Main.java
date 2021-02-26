@@ -1,4 +1,4 @@
-package HotelReservation;
+package hotelReservation;
 //created by J.M.
 
 import java.util.Scanner;
