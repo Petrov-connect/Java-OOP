@@ -10,6 +10,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         StudentSystem studentSystem = new StudentSystem();
         String input;
+
         while (!"Exit".equals(input = scan.nextLine())) {
             String[] command = input.split("\\s+");
             String output = studentSystem.parseCommand(command);
