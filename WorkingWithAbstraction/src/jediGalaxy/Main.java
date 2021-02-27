@@ -25,7 +25,7 @@ public class Main {
 
     private static void playerStartMove(int row, int col) {
         while (row >= 0 && col < matrix[0].length) {
-            if (row < matrix.length && col >= 0 ) {
+            if (row < matrix.length && col >= 0) {
                 sum += matrix[row][col];
             }
             col++;
@@ -35,7 +35,7 @@ public class Main {
 
     private static void evilStartMove(int row, int col) {
         while (row >= 0 && col >= 0) {
-            if (row < matrix.length && col < matrix[row].length ) {
+            if (row < matrix.length && col < matrix[row].length) {
                 matrix[row][col] = 0;
             }
             row--;
