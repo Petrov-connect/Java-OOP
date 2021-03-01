@@ -4,7 +4,7 @@ package jediGalaxy;
 import java.util.*;
 
 public class Main {
-    private static long sum = 0;
+    private static long playerPoints = 0;
     private static int[][] matrix;
 
     public static void main(String[] args) {
@@ -20,13 +20,13 @@ public class Main {
             evilStartMove(evilStartIndex[0], evilStartIndex[1]);
             playerStartMove(playerStartIndex[0], playerStartIndex[1]);
         }
-        System.out.println(sum);
+        System.out.println(playerPoints);
     }
 
     private static void playerStartMove(int row, int col) {
         while (row >= 0 && col < matrix[0].length) {
             if (row < matrix.length && col >= 0) {
-                sum += matrix[row][col];
+                playerPoints += matrix[row][col];
             }
             col++;
             row--;
