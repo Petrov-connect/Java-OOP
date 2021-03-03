@@ -10,7 +10,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String[] trafficLights = scan.nextLine().split("\\s+");
         int n = Integer.parseInt(scan.nextLine());
-        while (n-- >0) {
+
+        while (n-- > 0) {
             StringBuilder output = new StringBuilder();
             for (int i = 0; i < trafficLights.length; i++) {
                 trafficLights[i] = String.valueOf(TrafficState.update(TrafficState.valueOf(trafficLights[i])));

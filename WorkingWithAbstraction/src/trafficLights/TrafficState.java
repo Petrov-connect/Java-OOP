@@ -6,12 +6,9 @@ public enum TrafficState {
 
     public static TrafficState update(TrafficState state) {
         switch (state) {
-            case RED:
-            return GREEN;
-            case YELLOW:
-            return RED;
-            case GREEN:
-            return YELLOW;
+            case RED:    return GREEN;
+            case YELLOW: return RED;
+            case GREEN:  return YELLOW;
         }
         return null;
     }
