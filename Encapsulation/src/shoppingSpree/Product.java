@@ -26,11 +26,11 @@ public class Product {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public double getCost() {
-        return cost;
+        return this.cost;
     }
 }
 
