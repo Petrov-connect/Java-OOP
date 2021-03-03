@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         Scanner scan = new Scanner(System.in);
         try {
             setObject(scan, "Person");
@@ -21,8 +22,8 @@ public class Main {
         String command;
 
         while (!"END".equals(command = scan.nextLine())) {
-            String[] tokens = command.split("\\s+");
             try {
+                String[] tokens = command.split("\\s+");
                 people.get(tokens[0]).buyProduct(products.get(tokens[1]));
             } catch (IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
