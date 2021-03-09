@@ -3,6 +3,8 @@ package foodShortage;
 
 public class Rebel implements Buyer,Person{
 
+    private static final int INCREASES_FOOD_WHIT_FIVE = 5;
+
     private final String name;
     private final int age;
     private final String group;
@@ -21,7 +23,7 @@ public class Rebel implements Buyer,Person{
 
     @Override
     public void buyFood() {
-        this.food+=5;
+        this.food+=INCREASES_FOOD_WHIT_FIVE;
     }
 
     @Override
