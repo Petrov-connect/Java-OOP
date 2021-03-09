@@ -3,6 +3,8 @@ package foodShortage;
 
 public class Citizen implements Person, Identifiable, Birthable, Buyer {
 
+    private static final int INCREASES_FOOD_WHIT_TEN = 10;
+
     private final String name;
     private final int age;
     private final String id;
@@ -39,7 +41,7 @@ public class Citizen implements Person, Identifiable, Birthable, Buyer {
 
     @Override
     public void buyFood() {
-        this.food += 10;
+        this.food += INCREASES_FOOD_WHIT_TEN;
     }
 
     @Override
