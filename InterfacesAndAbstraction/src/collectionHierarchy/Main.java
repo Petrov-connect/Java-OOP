@@ -6,9 +6,10 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static AddCollection addCollection = new AddCollection();
-    public static AddRemoveCollection addRemoveCollection = new AddRemoveCollection();
-    public static MyListImpl myListImpl = new MyListImpl();
+    public static List<MyList>collections=new ArrayList<>(){{
+        add((MyList) new AddCollection());
+        add((MyList) new AddRemoveCollection());
+        add((MyList) new AddRemoveCollection());}};
 
     public static void main(String[] args) {
 
@@ -16,16 +17,20 @@ public class Main {
         String[] input = scan.nextLine().split("\\s+");
         int n = Integer.parseInt(scan.nextLine());
 
+        addToCollection(input,0);
+        addToCollection(input,1);
+        addToCollection(input,2);
+        removeFromCollection(n,2);
+        removeFromCollection(n,3);
+    }
 
-        Arrays.stream(input).forEach(e -> System.out.printf("%d ", addCollection.add(e)));
+    private static void removeFromCollection(int range , int index) {
+        IntStream.range(0, range).forEach(i -> System.out.printf("%s ", collections.get(index).remove()));
         System.out.println();
-        Arrays.stream(input).forEach(e -> System.out.printf("%d ", addRemoveCollection.add(e)));
-        System.out.println();
-        Arrays.stream(input).forEach(e -> System.out.printf("%d ", myListImpl.add(e)));
-        System.out.println();
-        IntStream.range(0, n).forEach(i -> System.out.printf("%s ", addRemoveCollection.remove()));
-        System.out.println();
-        IntStream.range(0, n).forEach(i -> System.out.printf("%s ", myListImpl.remove()));
+    }
 
+    private static void addToCollection(String[] input, int index) {
+        Arrays.stream(input).forEach(e -> System.out.printf("%d ", collections.get(index).add(e)));
+        System.out.println();
     }
 }
