@@ -1,12 +1,11 @@
 package vehicles;
 //created by J.M.
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public abstract class VehicleFactory {
 
-    public static final Map<String, Vehicles> info = new HashMap<>();
+    public static final Map<String, Vehicles> info = new LinkedHashMap<>();
 
     public static void create(String[] info) {
 
