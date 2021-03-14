@@ -12,9 +12,9 @@ public class Main {
 
         CalculationEngine engine = new CalculationEngine();
         InputInterpreter interpreter = Extensions.buildInterpreter(engine);
-        String[] tokens = scanner.nextLine().split("\\s+");
+        String[] input = scanner.nextLine().split("\\s+");
 
-        Arrays.stream(tokens).takeWhile(token -> !token.equals("end")).forEach(interpreter::interpret);
+        Arrays.stream(input).takeWhile(element -> !element.equals("end")).forEach(interpreter::interpret);
 
         System.out.println(engine.getCurrentResult());
     }
