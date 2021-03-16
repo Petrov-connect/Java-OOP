@@ -3,6 +3,7 @@ package loggerLib;
 
 import loggerLib.appenders.ConsoleAppender;
 import loggerLib.appenders.FileAppender;
+import loggerLib.appenders.SocketAppender;
 import loggerLib.appenders.interfaces.Appender;
 import loggerLib.enumerations.ReportLevel;
 import loggerLib.layouts.SimpleLayout;
@@ -11,11 +12,18 @@ import loggerLib.layouts.interfaces.Layout;
 import loggerLib.loggers.MessageLogger;
 import loggerLib.loggers.interfaces.Logger;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        /*Socket:
+        Layout layout = new XmlLayout();
+        Appender appender = new SocketAppender(layout);
+        Logger logger = new MessageLogger(appender);
+        logger.logInfo("16.03.20021","Hello Gogo");*/
 
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
@@ -74,7 +82,7 @@ public class Main {
             }
 
             line = scanner.nextLine();
-            
+
         }
 
         System.out.println(logger.toString());
