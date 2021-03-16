@@ -3,8 +3,10 @@ package loggerLib.appenders.interfaces;
 
 import loggerLib.enumerations.ReportLevel;
 
+import java.io.IOException;
+
 public interface Appender {
-    void append(String data, ReportLevel reportLevel, String message);
+    void append(String data, ReportLevel reportLevel, String message) throws IOException;
     void setReportLevel(ReportLevel reportLevel);
     ReportLevel getReportLevel();
 }
