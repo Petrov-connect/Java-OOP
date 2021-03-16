@@ -19,13 +19,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        /*Socket:
+        //Socket:
         Layout layout = new XmlLayout();
         Appender appender = new SocketAppender(layout);
         Logger logger = new MessageLogger(appender);
-        logger.logInfo("16.03.20021","Hello Gogo");*/
+        logger.logInfo("16.03.20021","Hello Gogo");
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
 
         Appender[] appenders = new Appender[n];
@@ -57,26 +57,26 @@ public class Main {
         String line = scanner.nextLine();
 
         while (!line.equals("END")) {
-            String[] tokens = line.split("\\|");
+            String[] input = line.split("\\|");
 
-            switch (ReportLevel.valueOf(tokens[0])) {
+            switch (ReportLevel.valueOf(input[0])) {
                 case INFO:
-                    logger.logInfo(tokens[1], tokens[2]);
+                    logger.logInfo(input[1], input[2]);
                     break;
                 case ERROR:
-                    logger.logError(tokens[1], tokens[2]);
+                    logger.logError(input[1], input[2]);
 
                     break;
                 case FATAL:
-                    logger.logFatal(tokens[1], tokens[2]);
+                    logger.logFatal(input[1], input[2]);
 
                     break;
                 case WARNING:
-                    logger.logWarning(tokens[1], tokens[2]);
+                    logger.logWarning(input[1], input[2]);
 
                     break;
                 case CRITICAL:
-                    logger.logCritical(tokens[1], tokens[2]);
+                    logger.logCritical(input[1], input[2]);
 
                     break;
             }
@@ -85,6 +85,6 @@ public class Main {
 
         }
 
-        System.out.println(logger.toString());
+        System.out.println(logger.toString());*/
     }
 }

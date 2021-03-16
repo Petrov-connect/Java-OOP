@@ -31,14 +31,13 @@ public class SocketAppender extends AppenderImpl{
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
     }
 
-    public String sendMessage(String msg) throws IOException {
+    public void sendMessage(String msg) throws IOException {
         out.println(msg);
-        String resp = in.readLine();
-        return resp;
+        in.readLine();
     }
 
     @Override
-    public void append(String data, ReportLevel reportLevel, String message) throws IOException {
-        this.sendMessage(this.format(data,reportLevel,message));
+    public void append(String date, ReportLevel reportLevel, String message) throws IOException {
+        this.sendMessage(this.format(date,reportLevel,message));
     }
 }

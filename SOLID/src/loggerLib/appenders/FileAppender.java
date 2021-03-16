@@ -24,7 +24,7 @@ public class FileAppender extends AppenderImpl {
     }
 
     @Override
-    public void append(String data, ReportLevel reportLevel, String message) {
+    public void append(String date, ReportLevel reportLevel, String message) {
         if (this.file == null){
             try {
                 this.setFile(new LogFile());
@@ -32,7 +32,7 @@ public class FileAppender extends AppenderImpl {
                 e.printStackTrace();
             }
         }
-        String str = this.format(data,reportLevel,message);
+        String str = this.format(date,reportLevel,message);
 
         file.appendBuffer(str);
         this.file.write();

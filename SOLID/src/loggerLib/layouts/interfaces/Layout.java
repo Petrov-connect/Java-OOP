@@ -4,5 +4,5 @@ package loggerLib.layouts.interfaces;
 import loggerLib.enumerations.ReportLevel;
 
 public interface Layout {
-    String format(String data, ReportLevel reportLevel, String message);
+    String format(String date, ReportLevel reportLevel, String message);
 }
