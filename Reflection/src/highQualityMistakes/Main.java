@@ -17,13 +17,13 @@ public class Main {
                 .forEach(field->System.out.printf("%s must be private!%n",field.getName()));
 
         Arrays.stream(Reflection.class.getDeclaredMethods())
-                .filter(current->current.getName().startsWith("get"))
+                .filter(method->method.getName().startsWith("get"))
                 .sorted(Comparator.comparing(Method::getName))
                 .filter(getter->!Modifier.isPublic(getter.getModifiers()))
                 .forEach(getter -> System.out.printf("%s have to be public!%n", getter.getName()));
 
         Arrays.stream(Reflection.class.getDeclaredMethods())
-                .filter(current->current.getName().startsWith("set"))
+                .filter(method->method.getName().startsWith("set"))
                 .sorted(Comparator.comparing(Method::getName))
                 .filter(setter->!Modifier.isPrivate(setter.getModifiers()))
                 .forEach(setter -> System.out.printf("%s have to be private!%n", setter.getName()));
