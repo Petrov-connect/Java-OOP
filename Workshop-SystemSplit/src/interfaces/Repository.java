@@ -1,8 +1,6 @@
 package interfaces;
 //created by J.M.
 
-import interfaces.Reactor;
-
 import java.util.Map;
 
 public interface Repository {
