@@ -1,10 +1,12 @@
-package repositories;
+package repository;
+//created by J.M.
 
-import exceptions.DuplicateModelException;
-import exceptions.NonExistantModelException;
+import manager.exceptions.DuplicateModelException;
+import manager.exceptions.NonExistantModelException;
 import models.interfaces.ModelGetter;
 
 public interface Repository<T extends ModelGetter> {
+
     void add(T entity) throws DuplicateModelException;
     T get(String model) throws NonExistantModelException;
 }
