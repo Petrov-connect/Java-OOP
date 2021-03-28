@@ -1,14 +1,15 @@
-package repositories;
+package repository;
+//created by J.M.
 
-import exceptions.DuplicateModelException;
-import exceptions.NonExistantModelException;
+import manager.exceptions.DuplicateModelException;
+import manager.exceptions.NonExistantModelException;
 import models.interfaces.ModelGetter;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RepositoryImpl<T extends ModelGetter> implements Repository<T> {
-    private Map<String, T> entities;
+    private final Map<String, T> entities;
 
     public RepositoryImpl(){
         this.entities = new LinkedHashMap<>();
