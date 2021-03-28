@@ -3,7 +3,7 @@ package rpg_lab;
 
 public class Axe implements Weapon{
 
-    private int attackPoints;
+    private final int attackPoints;
     private int durabilityPoints;
 
     public Axe(int attack, int durability) {
