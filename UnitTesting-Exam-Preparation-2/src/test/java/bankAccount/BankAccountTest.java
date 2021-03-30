@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 public class BankAccountTest {
 
+
     private static final BigDecimal testValue = BigDecimal.valueOf(100.1);
     private static final String testName = "testAccount";
     private static String testParameter;
