@@ -16,7 +16,7 @@ public class AxeTest {
 
     @Before
     public void setUp(){
-        this.axe = createAxe(ATTACK,DURABILITY);
+        this.axe = createAxe(DURABILITY);
         this.dummy = createDummy();
     }
 
@@ -28,7 +28,7 @@ public class AxeTest {
 
     @Test(expected = IllegalStateException.class)
     public void testAxeAttackShouldFailIfAxeHasZeroDurability(){
-        Axe axe = createAxe(ATTACK,0);
+        Axe axe = createAxe(0);
         axe.attack(dummy);
     }
 
@@ -38,8 +38,8 @@ public class AxeTest {
         assertEquals(DURABILITY-1,axe.getDurabilityPoints());
     }
 
-    private Axe createAxe(int attack, int durability) {
-        return new Axe(attack, durability);
+    private Axe createAxe(int durability) {
+        return new Axe(ATTACK, durability);
     }
 
     private Dummy createDummy(){
