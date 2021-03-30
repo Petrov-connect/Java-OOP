@@ -99,8 +99,10 @@ public class CarTest {
     public void testDriveMustReturnCorrectMessageWhenDrive() {
 
         double testDouble = 1.00;
+        double expected = car.getFuelAmount()-testDouble*car.getFuelConsumptionPerKm();
         String message = "Have a nice trip";
         assertEquals(message,car.drive(testDouble));
+        assertEquals(expected,car.getFuelAmount(),0.00);
     }
 
     @Test(expected = IllegalStateException.class)
