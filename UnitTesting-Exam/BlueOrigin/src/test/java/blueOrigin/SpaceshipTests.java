@@ -14,7 +14,6 @@ public class SpaceshipTests {
     private static final double TEST_OXYGEN_BY_ASTRONAUT_1 = 55.5;
     private static final double TEST_OXYGEN_BY_ASTRONAUT_2 = 77.7;
 
-
     private static Spaceship spaceship;
     private static Astronaut astronaut1;
     private static Astronaut astronaut2;
