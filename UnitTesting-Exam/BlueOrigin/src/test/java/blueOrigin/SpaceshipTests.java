@@ -18,7 +18,6 @@ public class SpaceshipTests {
     private static Astronaut astronaut1;
     private static Astronaut astronaut2;
 
-
     @Before
     public void setUp() {
         astronaut1 = createAstronaut(TEST_NAME_BY_ASTRONAUT_1, TEST_OXYGEN_BY_ASTRONAUT_1);
