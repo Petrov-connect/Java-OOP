@@ -9,10 +9,10 @@ import javax.naming.OperationNotSupportedException;
 
 public class BankVaultTest {
 
-    private static final String owner1 = "j.m.";
-    private static final String owner2 = "j.n";
-    private static final String  itemId1 = "123";
-    private static final String  itemId2 = "321";
+    private static final String owner1 = "Joro Petrov";
+    private static final String owner2 = "Svetlyo Stoyanov";
+    private static final String  itemId1 = "123456789";
+    private static final String  itemId2 = "987654321";
     private static  Item item1;
     private static  Item item2;
     private static final String testInvalidCeil = "abv";
