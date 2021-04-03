@@ -1,6 +1,7 @@
-package bakery.entities.bakedFoods.interfaces;
+package bakery.entities.bakedFoods;
+//created by J.M.
 
-public class Bread extends BaseFood{
+public class Bread extends BaseFood {
 
     public static final double INITIAL_BREAD_PORTION = 200;
 

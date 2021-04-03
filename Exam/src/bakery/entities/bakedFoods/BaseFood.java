@@ -1,8 +1,11 @@
-package bakery.entities.bakedFoods.interfaces;
+package bakery.entities.bakedFoods;
+//created by J.M.
+
+import bakery.entities.bakedFoods.interfaces.BakedFood;
 
 import static bakery.common.ExceptionMessages.*;
 
-public abstract class BaseFood implements BakedFood{
+public abstract class BaseFood implements BakedFood {
 
     private String name;
     private double portion;
@@ -15,21 +18,21 @@ public abstract class BaseFood implements BakedFood{
     }
 
     private void setName(String name) {
-        if (name == null || name.trim().isEmpty()){
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME);
         }
         this.name = name;
     }
 
     private void setPortion(double portion) {
-        if (portion <= 0){
+        if (portion <= 0) {
             throw new IllegalArgumentException(INVALID_PORTION);
         }
         this.portion = portion;
     }
 
     private void setPrice(double price) {
-        if (price <= 0){
+        if (price <= 0) {
             throw new IllegalArgumentException(INVALID_PRICE);
         }
         this.price = price;
@@ -52,9 +55,8 @@ public abstract class BaseFood implements BakedFood{
 
     @Override
     public String toString() {
-        String sb = String.format("%s: %.2fg - %.2f",
-                this.getClass().getSimpleName(), this.getPortion(), this.getPrice()) +
-                System.lineSeparator();
-        return sb.trim();
+
+        return String.format("%s: %.2fg - %.2f",
+                this.getName(), this.getPortion(), this.getPrice());
     }
 }
