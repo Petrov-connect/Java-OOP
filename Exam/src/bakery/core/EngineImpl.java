@@ -1,4 +1,5 @@
 package bakery.core;
+//created by J.M.
 
 import bakery.common.enums.Commands;
 import bakery.core.interfaces.Controller;
@@ -10,9 +11,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class EngineImpl implements Engine {
-    private ConsoleReader reader;
-    private ConsoleWriter writer;
-    private Controller controller;
+
+    private final ConsoleReader reader;
+    private final ConsoleWriter writer;
+    private final Controller controller;
 
     public EngineImpl(ConsoleReader reader, ConsoleWriter writer, Controller controller) {
         this.reader = reader;
@@ -22,7 +24,7 @@ public class EngineImpl implements Engine {
 
     public void run() {
         while (true) {
-            String result = null;
+            String result;
             try {
                 result = processInput();
 
@@ -61,17 +63,17 @@ public class EngineImpl implements Engine {
                 break;
             case AddTable:
                 result = this.controller.addTable(
-                        data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2])
-                        );
+                        data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2])
+                );
                 break;
             case ReserveTable:
                 result = this.controller.reserveTable(Integer.parseInt(data[0]));
                 break;
             case OrderDrink:
-                result = this.controller.orderDrink(Integer.parseInt(data[0]),data[1],data[2]);
+                result = this.controller.orderDrink(Integer.parseInt(data[0]), data[1], data[2]);
                 break;
             case OrderFood:
-                result = this.controller.orderFood(Integer.parseInt(data[0]),data[1]);
+                result = this.controller.orderFood(Integer.parseInt(data[0]), data[1]);
                 break;
             case LeaveTable:
                 result = this.controller.leaveTable(Integer.parseInt(data[0]));
