@@ -1,4 +1,5 @@
 package bakery.common;
+//created by J.M.
 
 public class OutputMessages {
     public static final String FOOD_ADDED = "Added %s (%s) to the menu";
