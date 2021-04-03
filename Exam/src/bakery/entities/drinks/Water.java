@@ -1,6 +1,7 @@
-package bakery.entities.drinks.interfaces;
+package bakery.entities.drinks;
+//created by J.M.
 
-public class Water extends BaseDrink{
+public class Water extends BaseDrink {
 
     public static final double WATER_PRICE = 1.50;
 

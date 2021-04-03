@@ -1,8 +1,11 @@
-package bakery.entities.drinks.interfaces;
+package bakery.entities.drinks;
+//created by J.M.
+
+import bakery.entities.drinks.interfaces.Drink;
 
 import static bakery.common.ExceptionMessages.*;
 
-public abstract class BaseDrink implements Drink{
+public abstract class BaseDrink implements Drink {
 
     private String name;
     private int portion;
@@ -17,28 +20,28 @@ public abstract class BaseDrink implements Drink{
     }
 
     private void setName(String name) {
-        if (name == null || name.trim().isEmpty()){
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME);
         }
         this.name = name;
     }
 
     private void setPortion(int portion) {
-        if (portion <= 0){
+        if (portion <= 0) {
             throw new IllegalArgumentException(INVALID_PORTION);
         }
         this.portion = portion;
     }
 
     private void setPrice(double price) {
-        if (price <= 0){
+        if (price <= 0) {
             throw new IllegalArgumentException(INVALID_PRICE);
         }
         this.price = price;
     }
 
     private void setBrand(String brand) {
-        if (brand == null || brand.trim().isEmpty()){
+        if (brand == null || brand.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_BRAND);
         }
         this.brand = brand;
@@ -66,9 +69,8 @@ public abstract class BaseDrink implements Drink{
 
     @Override
     public String toString() {
-        String sb = String.format("%s %s - %dml - %.2flv",
-                this.getClass().getSimpleName(), this.getBrand(), this.getPortion(), this.getPrice()) +
-                System.lineSeparator();
-        return sb.trim();
+
+        return String.format("%s %s - %dml - %.2flv",
+                this.getName(), this.getBrand(), this.getPortion(), this.getPrice());
     }
 }
