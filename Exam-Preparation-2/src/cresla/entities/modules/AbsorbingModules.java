@@ -1,5 +1,4 @@
-package cresla.modules;
-//created by J.M.
+package cresla.entities.modules;
 
 import cresla.interfaces.AbsorbingModule;
 
@@ -14,20 +13,16 @@ public abstract class AbsorbingModules extends Modules implements AbsorbingModul
     }
 
     @Override
-    public String getParameter() {
-        return "Heat Absorbing";
-    }
-
-    @Override
     public int getHeatAbsorbing() {
         return this.heatAbsorbing;
     }
 
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
-        output.append(String.format("%s Module – %d", this.getClass().getSimpleName(), this.getId()));
-        output.append(System.lineSeparator()).append(String.format("%s: %d", this.getParameter(), getHeatAbsorbing()));
-        return output.toString();
+
+        return String.format("%s Module – %d%nHeat Absorbing: %d",
+                this.getClass().getSimpleName(),
+                this.getId(),
+                this.getHeatAbsorbing());
     }
 }
