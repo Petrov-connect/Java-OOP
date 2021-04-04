@@ -6,7 +6,6 @@ import cresla.entities.reactors.*;
 import cresla.interfaces.*;
 import cresla.interfaces.Module;
 
-
 import java.util.*;
 
 public class ManagerImpl implements Manager {
