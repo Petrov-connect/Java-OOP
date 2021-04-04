@@ -2,10 +2,10 @@ package cresla.core;
 //created by J.M.
 
 import cresla.entities.modules.*;
-import cresla.entities.reactors.CryoReactor;
-import cresla.entities.reactors.HeatReactor;
+import cresla.entities.reactors.*;
 import cresla.interfaces.*;
 import cresla.interfaces.Module;
+
 
 import java.util.*;
 
@@ -49,24 +49,23 @@ public class ManagerImpl implements Manager {
         int currentId = id;
         String moduleType = arguments.get(1);
         id++;
-
+        Module module;
         if (moduleType.equals("CryogenRod")) {
 
-            EnergyModule module = new CryogenRod(currentId, additionalParameter);
+            module = new CryogenRod(currentId, additionalParameter);
 
-            reactorMap.get(reactorId).addEnergyModule(module);
-            moduleMap.put(currentId, module);
+            reactorMap.get(reactorId).addEnergyModule((EnergyModule) module);
 
         } else {
 
-            AbsorbingModule module = moduleType.equals("HeatProcessor")
+            module = moduleType.equals("HeatProcessor")
 
                     ? new HeatProcessor(currentId, additionalParameter)
                     : new CooldownSystem(currentId, additionalParameter);
 
-            reactorMap.get(reactorId).addAbsorbingModule(module);
-            moduleMap.put(currentId, module);
+            reactorMap.get(reactorId).addAbsorbingModule((AbsorbingModule) module);
         }
+        moduleMap.put(currentId, module);
         return String.format("Added %s - %d to Reactor - %d", moduleType, currentId, reactorId);
     }
 
