@@ -13,12 +13,12 @@ public class CryoReactor extends Reactors {
 
     private int getCryoProductionIndex() {
 
-        return cryoProductionIndex;
+        return this.cryoProductionIndex;
     }
 
     @Override
     public long getTotalEnergyOutput() {
 
-        return super.getTotalEnergyOutput() * this.getCryoProductionIndex();
+        return super.getTotalEnergyOutput()* this.getCryoProductionIndex();
     }
 }
