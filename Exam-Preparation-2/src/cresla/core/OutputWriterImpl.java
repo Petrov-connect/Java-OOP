@@ -1,10 +1,9 @@
-package cresla.manager;
+package cresla.core;
 //created by J.M.
 
 import cresla.interfaces.OutputWriter;
 
 public class OutputWriterImpl implements OutputWriter {
-
 
     @Override
     public void write(String output) {
