@@ -1,8 +1,11 @@
 package cresla.core;
 //created by J.M.
 
-import cresla.entities.modules.*;
-import cresla.entities.reactors.*;
+import cresla.entities.modules.CooldownSystem;
+import cresla.entities.modules.CryogenRod;
+import cresla.entities.modules.HeatProcessor;
+import cresla.entities.reactors.CryoReactor;
+import cresla.entities.reactors.HeatReactor;
 import cresla.interfaces.*;
 import cresla.interfaces.Module;
 
