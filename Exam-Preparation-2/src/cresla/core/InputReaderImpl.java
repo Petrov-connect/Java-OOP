@@ -9,14 +9,19 @@ import java.io.InputStreamReader;
 
 public class InputReaderImpl implements InputReader {
 
-    BufferedReader reader;
+    private final BufferedReader reader;
 
     public InputReaderImpl() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
     @Override
-    public String readLine() throws IOException {
-        return this.reader.readLine();
+    public String readLine() {
+
+        try {
+            return this.reader.readLine().trim();
+        } catch (IOException exception) {
+            return null;
+        }
     }
 }
