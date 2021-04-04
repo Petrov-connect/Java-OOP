@@ -1,11 +1,11 @@
 package cresla.entities.modules;
+//created by J.M.
 
 import cresla.interfaces.AbsorbingModule;
 
 public abstract class AbsorbingModules extends Modules implements AbsorbingModule {
 
     private final int heatAbsorbing;
-
 
     protected AbsorbingModules(int id, int heatAbsorbing) {
         super(id);
@@ -20,9 +20,15 @@ public abstract class AbsorbingModules extends Modules implements AbsorbingModul
     @Override
     public String toString() {
 
-        return String.format("%s Module – %d%nHeat Absorbing: %d",
-                this.getClass().getSimpleName(),
-                this.getId(),
-                this.getHeatAbsorbing());
+        StringBuilder output = new StringBuilder();
+
+        output.append(this.getClass().getSimpleName())
+                .append(" Module – ")
+                .append(this.getId())
+                .append(System.lineSeparator())
+                .append("Heat Absorbing: ")
+                .append(this.getHeatAbsorbing());
+
+        return output.toString().trim();
     }
 }
