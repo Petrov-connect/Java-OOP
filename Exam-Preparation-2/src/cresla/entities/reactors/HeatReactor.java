@@ -1,7 +1,7 @@
-package cresla.reaktors;
+package cresla.entities.reactors;
 //created by J.M.
 
-public class HeatReactor extends ReactorImpl {
+public class HeatReactor extends Reactors {
 
     private final int heatReductionIndex;
 
@@ -11,13 +11,16 @@ public class HeatReactor extends ReactorImpl {
         this.heatReductionIndex = heatReductionIndex;
     }
 
-    @Override
-    public long getTotalHeatAbsorbing() {
-        return this.moduleContainer.getTotalHeatAbsorbing() + getHeatReductionIndex();
-    }
+    private int getHeatReductionIndex() {
 
-    public int getHeatReductionIndex() {
         return heatReductionIndex;
     }
+
+    @Override
+    public long getTotalHeatAbsorbing() {
+
+        return super.getTotalHeatAbsorbing() + getHeatReductionIndex();
+    }
+
 
 }
