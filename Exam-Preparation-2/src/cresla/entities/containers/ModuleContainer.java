@@ -30,6 +30,7 @@ public class ModuleContainer implements Container {
         if (this.modulesByInput.size() == this.moduleCapacity) {
             this.removeOldestModule();
         }
+
         this.energyModules.put(energyModule.getId(), energyModule);
         this.modulesByInput.addLast(energyModule);
     }
