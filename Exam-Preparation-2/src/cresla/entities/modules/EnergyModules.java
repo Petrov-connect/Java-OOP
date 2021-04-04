@@ -21,10 +21,15 @@ public abstract class EnergyModules  extends Modules implements EnergyModule {
     @Override
     public String toString() {
 
-        return String.format("%s Module – %d%nEnergy Output: %d",
-                this.getClass().getSimpleName(),
-                this.getId(),
-                this.getEnergyOutput());
+        StringBuilder output = new StringBuilder();
 
+        output.append(this.getClass().getSimpleName())
+                .append(" Module – ")
+                .append(this.getId())
+                .append(System.lineSeparator())
+                .append("Energy Output: ")
+                .append(this.getEnergyOutput());
+
+        return output.toString().trim();
     }
 }
