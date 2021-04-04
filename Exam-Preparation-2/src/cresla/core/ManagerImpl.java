@@ -21,7 +21,6 @@ public class ManagerImpl implements Manager {
         this.moduleMap = new HashMap<>();
     }
 
-
     @Override
     public String reactorCommand(List<String> arguments) {
 
@@ -30,8 +29,8 @@ public class ManagerImpl implements Manager {
         int moduleCapacity = Integer.parseInt(arguments.get(2));
 
         Reactor reactor = reactorType.equals("Heat")
-                ? new HeatReactor(Id.newId(), moduleCapacity, additionalParameter)
-                : new CryoReactor(Id.newId(), moduleCapacity, additionalParameter);
+                ? new HeatReactor(newId(), moduleCapacity, additionalParameter)
+                : new CryoReactor(newId(), moduleCapacity, additionalParameter);
 
         reactorMap.put(id, reactor);
 
@@ -48,7 +47,7 @@ public class ManagerImpl implements Manager {
 
         if (moduleType.equals("CryogenRod")) {
 
-            module = new CryogenRod(Id.newId(), additionalParameter);
+            module = new CryogenRod(newId(), additionalParameter);
 
             reactorMap.get(reactorId).addEnergyModule((EnergyModule) module);
 
@@ -56,8 +55,8 @@ public class ManagerImpl implements Manager {
 
             module = moduleType.equals("HeatProcessor")
 
-                    ? new HeatProcessor(Id.newId(), additionalParameter)
-                    : new CooldownSystem(Id.newId(), additionalParameter);
+                    ? new HeatProcessor(newId(), additionalParameter)
+                    : new CooldownSystem(newId(), additionalParameter);
 
             reactorMap.get(reactorId).addAbsorbingModule((AbsorbingModule) module);
         }
@@ -109,9 +108,7 @@ public class ManagerImpl implements Manager {
         return output.toString().trim();
     }
 
-    private static class Id{
-        static int newId(){
+    private static int newId(){
             return ++id;
-        }
     }
 }
