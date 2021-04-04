@@ -15,13 +15,14 @@ public class ManagerImpl implements Manager {
 
     private static int id = 0;
 
-    private final Map<Integer, Reactor> reactorMap;
-    private final Map<Integer, Module> moduleMap;
+    private static int newId() {
+        return ++id;
+    }
+
+    private static  Map<Integer, Reactor> reactorMap = new HashMap<>();
+    private static  Map<Integer, Module> moduleMap = new HashMap<>();
 
     public ManagerImpl() {
-
-        this.reactorMap = new HashMap<>();
-        this.moduleMap = new HashMap<>();
     }
 
     @Override
@@ -79,13 +80,11 @@ public class ManagerImpl implements Manager {
             output.append(moduleMap.get(wantedId).toString());
         }
 
-        return output.toString();
+        return output.toString().trim();
     }
 
     @Override
     public String exitCommand(List<String> arguments) {
-
-        StringBuilder output = new StringBuilder();
 
         int cryo = (int) reactorMap.entrySet().stream()
                 .filter(r -> r.getValue().getClass().getSimpleName().equals("CryoReactor")).count();
@@ -101,17 +100,26 @@ public class ManagerImpl implements Manager {
 
         long totalAbsorbing = reactorMap.values().stream().mapToLong(Reactor::getTotalHeatAbsorbing).sum();
 
-        output.append("Cryo Reactors: ").append(cryo).append(System.lineSeparator());
-        output.append("Heat Reactors: ").append(heat).append(System.lineSeparator());
-        output.append("Energy Modules: ").append(energyModule).append(System.lineSeparator());
-        output.append("Absorbing Modules: ").append(absorberModule).append(System.lineSeparator());
-        output.append("Total Energy Output: ").append(totalEnergy).append(System.lineSeparator());
-        output.append("Total Heat Absorbing: ").append(totalAbsorbing);
+        StringBuilder output = new StringBuilder();
+
+        output.append("Cryo Reactors: ")
+                .append(cryo)
+                .append(System.lineSeparator())
+                .append("Heat Reactors: ")
+                .append(heat)
+                .append(System.lineSeparator())
+                .append("Energy Modules: ")
+                .append(energyModule)
+                .append(System.lineSeparator())
+                .append("Absorbing Modules: ")
+                .append(absorberModule)
+                .append(System.lineSeparator())
+                .append("Total Energy Output: ")
+                .append(totalEnergy)
+                .append(System.lineSeparator())
+                .append("Total Heat Absorbing: ")
+                .append(totalAbsorbing);
 
         return output.toString().trim();
-    }
-
-    private static int newId(){
-            return ++id;
     }
 }
