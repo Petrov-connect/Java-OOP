@@ -14,6 +14,6 @@ public abstract class Modules implements Module {
 
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 }
