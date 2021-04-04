@@ -1,6 +1,8 @@
 package cresla.interfaces;
 //created by J.M.
 
+import java.io.IOException;
+
 public interface InputReader {
-    String readLine();
+    String readLine() throws IOException;
 }
