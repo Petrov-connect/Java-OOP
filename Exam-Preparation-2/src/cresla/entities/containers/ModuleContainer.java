@@ -1,5 +1,4 @@
-package cresla.containers;
-//created by J.M.
+package cresla.entities.containers;
 
 import cresla.interfaces.AbsorbingModule;
 import cresla.interfaces.Container;
@@ -30,7 +29,6 @@ public class ModuleContainer implements Container {
         if (this.modulesByInput.size() == this.moduleCapacity) {
             this.removeOldestModule();
         }
-
         this.energyModules.put(energyModule.getId(), energyModule);
         this.modulesByInput.addLast(energyModule);
     }
@@ -63,7 +61,7 @@ public class ModuleContainer implements Container {
     }
 
     @Override
-    public int getModuleByInputCount() {
+    public int getModuleByInputCount(){
         return this.modulesByInput.size();
     }
 
