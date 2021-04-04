@@ -12,5 +12,4 @@ public interface Reactor extends Identifiable {
     void addEnergyModule(EnergyModule energyModule);
 
     void addAbsorbingModule(AbsorbingModule absorbingModule);
-
 }
