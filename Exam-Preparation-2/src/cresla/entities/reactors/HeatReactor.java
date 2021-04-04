@@ -13,7 +13,7 @@ public class HeatReactor extends Reactors {
 
     private int getHeatReductionIndex() {
 
-        return heatReductionIndex;
+        return this.heatReductionIndex;
     }
 
     @Override
@@ -21,6 +21,4 @@ public class HeatReactor extends Reactors {
 
         return super.getTotalHeatAbsorbing() + getHeatReductionIndex();
     }
-
-
 }
