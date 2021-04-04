@@ -8,17 +8,17 @@ import cresla.interfaces.InputReader;
 import cresla.interfaces.Manager;
 import cresla.interfaces.OutputWriter;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
 
-        InputReader reader = new InputReaderImpl();
-        OutputWriter writer = new OutputWriterImpl();
-        Manager manager = new ManagerImpl();
+    private static final InputReader reader = new InputReaderImpl();
+    private static final OutputWriter writer = new OutputWriterImpl();
+    private static final Manager manager = new ManagerImpl();
+
+    public static void main(String[] args) {
 
         while (true) {
 
