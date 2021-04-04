@@ -19,11 +19,7 @@ public abstract class Reactors implements Reactor {
     @Override
     public long getTotalEnergyOutput() {
 
-        long energyOutput = this.moduleContainer.getTotalEnergyOutput();
-        if (energyOutput > this.getTotalHeatAbsorbing()) {
-            energyOutput = 0;
-        }
-        return energyOutput;
+        return this.moduleContainer.getTotalEnergyOutput();
     }
 
     @Override
@@ -45,6 +41,7 @@ public abstract class Reactors implements Reactor {
 
     @Override
     public void addEnergyModule(EnergyModule energyModule) {
+
         this.moduleContainer.addEnergyModule(energyModule);
     }
 
@@ -56,12 +53,21 @@ public abstract class Reactors implements Reactor {
     @Override
     public String toString() {
 
-        return String.format("%s - %d", this.getClass().getSimpleName(), getId()) +
-                System.lineSeparator() +
-                String.format("Energy Output: %d", getTotalEnergyOutput()) +
-                System.lineSeparator() +
-                String.format("Heat Absorbing: %d", getTotalHeatAbsorbing()) +
-                System.lineSeparator() +
-                String.format("Modules: %d", getModuleCount());
+        StringBuilder output = new StringBuilder();
+
+        output.append(this.getClass().getSimpleName())
+                .append(" - ")
+                .append(getId())
+                .append(System.lineSeparator())
+                .append("Energy Output: ")
+                .append(getTotalEnergyOutput())
+                .append(System.lineSeparator())
+                .append("Heat Absorbing: ")
+                .append(getTotalHeatAbsorbing())
+                .append(System.lineSeparator())
+                .append("Modules: ")
+                .append(getModuleCount());
+
+        return output.toString().trim();
     }
 }
