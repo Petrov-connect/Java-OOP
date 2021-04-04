@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ManagerImpl implements Manager {
 
-    private static int id = 1;
+    private static int id = 0;
 
     private final Map<Integer, Reactor> reactorMap;
     private final Map<Integer, Module> moduleMap;
@@ -28,16 +28,14 @@ public class ManagerImpl implements Manager {
         String reactorType = arguments.get(0);
         int additionalParameter = Integer.parseInt(arguments.get(1));
         int moduleCapacity = Integer.parseInt(arguments.get(2));
-        int currentId = id;
-        id++;
 
         Reactor reactor = reactorType.equals("Heat")
-                ? new HeatReactor(currentId, moduleCapacity, additionalParameter)
-                : new CryoReactor(currentId, moduleCapacity, additionalParameter);
+                ? new HeatReactor(Id.newId(), moduleCapacity, additionalParameter)
+                : new CryoReactor(Id.newId(), moduleCapacity, additionalParameter);
 
-        reactorMap.put(currentId, reactor);
+        reactorMap.put(id, reactor);
 
-        return String.format("Created %s Reactor - %d", reactorType, currentId);
+        return String.format("Created %s Reactor - %d", reactorType, id);
     }
 
     @Override
@@ -45,13 +43,12 @@ public class ManagerImpl implements Manager {
 
         int reactorId = Integer.parseInt(arguments.get(0));
         int additionalParameter = Integer.parseInt(arguments.get(2));
-        int currentId = id;
         String moduleType = arguments.get(1);
-        id++;
         Module module;
+
         if (moduleType.equals("CryogenRod")) {
 
-            module = new CryogenRod(currentId, additionalParameter);
+            module = new CryogenRod(Id.newId(), additionalParameter);
 
             reactorMap.get(reactorId).addEnergyModule((EnergyModule) module);
 
@@ -59,13 +56,13 @@ public class ManagerImpl implements Manager {
 
             module = moduleType.equals("HeatProcessor")
 
-                    ? new HeatProcessor(currentId, additionalParameter)
-                    : new CooldownSystem(currentId, additionalParameter);
+                    ? new HeatProcessor(Id.newId(), additionalParameter)
+                    : new CooldownSystem(Id.newId(), additionalParameter);
 
             reactorMap.get(reactorId).addAbsorbingModule((AbsorbingModule) module);
         }
-        moduleMap.put(currentId, module);
-        return String.format("Added %s - %d to Reactor - %d", moduleType, currentId, reactorId);
+        moduleMap.put(id, module);
+        return String.format("Added %s - %d to Reactor - %d", moduleType, id, reactorId);
     }
 
     @Override
@@ -110,5 +107,11 @@ public class ManagerImpl implements Manager {
         output.append("Total Heat Absorbing: ").append(totalAbsorbing);
 
         return output.toString().trim();
+    }
+
+    private static class Id{
+        static int newId(){
+            return ++id;
+        }
     }
 }
