@@ -119,9 +119,9 @@ public class ControllerImpl implements Controller {
         if (table == null) {
             return String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople);
         }
-        int tableNumber = table.getTableNumber();
-        this.tableRepository.getByNumber(tableNumber).reserve(numberOfPeople);
-        return String.format(TABLE_RESERVED, tableNumber, numberOfPeople);
+
+        table.reserve(numberOfPeople);
+        return String.format(TABLE_RESERVED, table.getTableNumber(), numberOfPeople);
 
     }
 
