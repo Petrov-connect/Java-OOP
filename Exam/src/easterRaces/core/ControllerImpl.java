@@ -101,6 +101,19 @@ public class ControllerImpl implements Controller {
     }
 
     @Override
+    public String createRace(String name, int laps) {
+
+        Race race = new RaceImpl(name, laps);
+
+        if (raceRepository.getAll().contains(race)) {
+            throw new IllegalArgumentException(String.format(RACE_EXISTS, name));
+        }
+        raceRepository.add(race);
+
+        return String.format(RACE_CREATED, name);
+    }
+
+    @Override
     public String startRace(String raceName) {
 
         if (raceRepository.getByName(raceName) == null) {
@@ -139,18 +152,5 @@ public class ControllerImpl implements Controller {
         });
 
         return output.toString().trim();
-    }
-
-    @Override
-    public String createRace(String name, int laps) {
-
-        Race race = new RaceImpl(name, laps);
-
-        if (raceRepository.getAll().contains(race)) {
-            throw new IllegalArgumentException(String.format(RACE_EXISTS, name));
-        }
-        raceRepository.add(race);
-
-        return String.format(RACE_CREATED, name);
     }
 }
