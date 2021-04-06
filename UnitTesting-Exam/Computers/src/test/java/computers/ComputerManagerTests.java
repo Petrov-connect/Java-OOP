@@ -26,6 +26,7 @@ public class ComputerManagerTests {
         computer2 = new Computer(manufacturer2,model2,price2);
         computerManager = new ComputerManager();
         Main.main(new String[]{"",""});
+
     }
 
     @Test(expected = IllegalArgumentException.class)
