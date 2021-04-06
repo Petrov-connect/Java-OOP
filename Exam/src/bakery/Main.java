@@ -16,6 +16,7 @@ import bakery.repositories.FoodRepositoryImpl;
 import bakery.repositories.TableRepositoryImpl;
 
 public class Main {
+
     public static void main(String[] args) {
 
         FoodRepository<BakedFood> foodRepository = new FoodRepositoryImpl();
