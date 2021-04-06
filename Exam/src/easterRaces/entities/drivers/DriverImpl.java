@@ -7,12 +7,14 @@ import easterRaces.entities.interfaces.Driver;
 import static easterRaces.common.ExceptionMessages.CAR_INVALID;
 
 public class DriverImpl implements Driver {
+
     private String name;
     private Car car;
     private int numberOfWins;
     private  boolean canParticipate;
 
     public DriverImpl(String name) {
+
         this.setName(name);
         this.canParticipate = false;
     }
