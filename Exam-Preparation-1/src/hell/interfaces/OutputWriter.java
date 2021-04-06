@@ -1,4 +1,5 @@
 package hell.interfaces;
+//created by J.M.
 
 /**
  *  This is the interface for the OutputWriter
