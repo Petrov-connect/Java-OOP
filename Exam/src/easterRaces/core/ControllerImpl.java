@@ -135,6 +135,7 @@ public class ControllerImpl implements Controller {
 
             switch (place) {
                 case "First":
+                    driverRepository.getByName(entry.getKey()).winRace();
                     output.append(String.format(DRIVER_FIRST_POSITION, entry.getKey(), raceName));
                     output.append(System.lineSeparator());
                     place = "Second";
