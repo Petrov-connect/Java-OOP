@@ -22,10 +22,10 @@ public class GarageTests {
 
     @Before
     public void setUp() {
+
         garage = new Garage();
         car1 = new Car(brand1, maxSpeed1, price1);
         car2 = new Car(brand2, maxSpeed2, price2);
-        Main.main(new String[]{"",""});
     }
 
     @Test(expected = IllegalArgumentException.class)
