@@ -12,6 +12,7 @@ import java.util.List;
 import static easterRaces.common.ExceptionMessages.*;
 
 public class RaceImpl implements Race {
+
     private String name;
     private int laps;
     private List<Driver> drivers;
@@ -53,6 +54,7 @@ public class RaceImpl implements Race {
 
     @Override
     public void addDriver(Driver driver) {
+
         if (driver == null){
             throw new IllegalArgumentException(DRIVER_INVALID);
         }
