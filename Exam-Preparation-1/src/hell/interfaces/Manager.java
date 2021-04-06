@@ -1,15 +1,17 @@
 package hell.interfaces;
+//created by J.M.
 
 import java.util.List;
 
 public interface Manager {
-    public String addHero(List<String> arguments);
 
-    public String addItem(List<String> arguments);
+    String addHero(List<String> arguments);
 
-    public String addRecipe(List<String> arguments);
+    String addItem(List<String> arguments);
 
-    public String inspect(List<String> arguments);
+    String addRecipe(List<String> arguments);
 
-    public String quit();
+    String inspect(List<String> arguments);
+
+    String quit();
 }
