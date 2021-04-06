@@ -19,7 +19,7 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public Map getRepository() {
+    public Map<String, Reactor> getRepository() {
 
         return repository;
     }
