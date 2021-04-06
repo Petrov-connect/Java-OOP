@@ -19,8 +19,6 @@ import static easterRaces.common.OutputMessages.*;
 
 public class ControllerImpl implements Controller {
 
-    private static Car car;
-    private static Race race;
     private static String place = "First";
 
     private Repository<Driver> driverRepository;
@@ -48,8 +46,9 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String createCar(String type, String model, int horsePower) {
+        Car car = null;
         if (type.equals("Muscle")) {
-            car = new MuscleCar(model, horsePower);
+           car = new MuscleCar(model, horsePower);
         } else if (type.equals("Sports")) {
             car = new SportsCar(model, horsePower);
         }
@@ -58,6 +57,7 @@ public class ControllerImpl implements Controller {
         } else {
             carRepository.add(car);
         }
+        assert car != null;
         return String.format(CAR_CREATED,car.getClass().getSimpleName(), model);
     }
 
@@ -123,7 +123,7 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String createRace(String name, int laps) {
-        race = new RaceImpl(name, laps);
+        Race race = new RaceImpl(name, laps);
         if (raceRepository.getAll().contains(race)) {
             throw new IllegalArgumentException(String.format(RACE_EXISTS, name));
         }
