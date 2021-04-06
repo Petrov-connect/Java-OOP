@@ -1,15 +1,13 @@
 package hell.entities.items;
+//created by J.M.
 
 import hell.interfaces.Recipe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class RecipeItem extends Items implements Recipe {
 
-    Collection<CommonItem> requiredItems;
+    List<String> requiredItems;
 
     public RecipeItem(String name,
                       int strengthBonus,
@@ -17,13 +15,15 @@ public class RecipeItem extends Items implements Recipe {
                       int intelligenceBonus,
                       int hitPointsBonus,
                       int damageBonus,
-                      CommonItem...requiredItems) {
+                      List<String> requiredItems) {
+
         super(name, strengthBonus, agilityBonus, intelligenceBonus, hitPointsBonus, damageBonus);
-        this.requiredItems = Arrays.asList(requiredItems);
+
+        this.requiredItems = requiredItems;
     }
 
     @Override
     public List<String> getRequiredItems() {
-        return null;
+        return this.requiredItems;
     }
 }
