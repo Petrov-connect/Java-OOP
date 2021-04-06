@@ -9,9 +9,6 @@ import easterRaces.entities.interfaces.Car;
 import easterRaces.entities.interfaces.Driver;
 import easterRaces.entities.interfaces.Race;
 import easterRaces.entities.racers.RaceImpl;
-import easterRaces.repositories.CarRepository;
-import easterRaces.repositories.DriverRepository;
-import easterRaces.repositories.RaceRepository;
 import easterRaces.repositories.interfaces.Repository;
 
 import java.util.HashMap;
@@ -34,9 +31,9 @@ public class ControllerImpl implements Controller {
                           Repository<Car> carRepository,
                           Repository<Race> raceRepository) {
 
-        this.driverRepository = new DriverRepository<>();
-        this.carRepository = new CarRepository<>();
-        this.raceRepository = new RaceRepository<>();
+        this.driverRepository = driverRepository;
+        this.carRepository = carRepository;
+        this.raceRepository = raceRepository;
     }
 
     @Override
