@@ -32,17 +32,20 @@ public class StoreTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddProductMustFailsWhenQuantityIsInvalid() {
+
         product1.setQuantity(invalidQuantity);
         store.addProduct(product1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddProductMustFailsWhenProductIsNull() {
+
         store.addProduct(null);
     }
 
     @Test
     public void testGetTheMostExpensiveProductMustReturnCorrectProduct() {
+
         store.addProduct(product1);
         store.addProduct(product2);
         Assert.assertEquals(product2.getPrice(), store.getTheMostExpensiveProduct().getPrice(), 0.0);
@@ -56,12 +59,14 @@ public class StoreTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void testBuyProductMustFailsWhenProductQuantityIsNotEnough() {
+
         store.addProduct(product1);
         store.buyProduct(name1, quantity2);
     }
 
     @Test
     public void testBuyProductMustReturnsCorrectProduct(){
+
         store.addProduct(product1);
         store.addProduct(product2);
         Assert.assertEquals(quantity2*price2,store.buyProduct(name2,quantity2),0.0);
@@ -69,6 +74,7 @@ public class StoreTests {
 
     @Test
     public void testGetCountMustReturnsCorrectCountOfProducts(){
+
         store.addProduct(product1);
         store.addProduct(product2);
         Assert.assertEquals(2,store.getCount());
@@ -76,6 +82,7 @@ public class StoreTests {
 
     @Test
     public void testGetProductsMustReturnsCorrectCollectionOfProducts(){
+
         store.addProduct(product1);
         store.addProduct(product2);
         List<Product> productList=store.getProducts();
