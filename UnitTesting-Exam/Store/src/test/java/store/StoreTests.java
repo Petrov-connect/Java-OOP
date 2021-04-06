@@ -83,5 +83,6 @@ public class StoreTests {
         Assert.assertEquals(product2,productList.get(1));
         Assert.assertEquals(name2,productList.get(1).getName());
         Assert.assertEquals(quantity2,productList.get(1).getQuantity());
+
     }
 }
