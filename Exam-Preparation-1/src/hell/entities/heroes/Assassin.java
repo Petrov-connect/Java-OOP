@@ -1,4 +1,5 @@
 package hell.entities.heroes;
+//created by J.M.
 
 public class Assassin extends Heroes {
 
@@ -9,6 +10,7 @@ public class Assassin extends Heroes {
     public static final int DAMAGE = 300;
 
     public Assassin(String name) {
+
         super(name, STRENGTH, AGILITY, INTELLIGENCE, HIT_POINTS, DAMAGE);
     }
 }
