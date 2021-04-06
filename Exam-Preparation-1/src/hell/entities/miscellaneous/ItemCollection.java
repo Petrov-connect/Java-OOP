@@ -1,6 +1,5 @@
 package hell.entities.miscellaneous;
-
-import hell.interfaces.Item;
+//created by J.M.
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

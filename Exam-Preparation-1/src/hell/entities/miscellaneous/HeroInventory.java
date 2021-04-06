@@ -1,19 +1,22 @@
 package hell.entities.miscellaneous;
+//created by J.M.
 
 import hell.entities.items.CommonItem;
-import hell.entities.items.RecipeItem;
 import hell.interfaces.Inventory;
 import hell.interfaces.Item;
 import hell.interfaces.Recipe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HeroInventory implements Inventory {
 
     @ItemCollection
-    private Map<String, Item> commonItems;
+    private final Map<String, Item> commonItems;
 
-    private Map<String, Recipe> recipeItems;
+    private final Map<String, Recipe> recipeItems;
 
     public HeroInventory() {
         this.commonItems = new LinkedHashMap<>();
@@ -59,13 +62,13 @@ public class HeroInventory implements Inventory {
 
     private void checkRecipes() {
         for (Recipe recipe : this.recipeItems.values()) {
-            List<String> requiredItems = new ArrayList<String>(recipe.getRequiredItems());
+            List<String> requiredItems = new ArrayList<>(recipe.getRequiredItems());
 
             for (Item item : this.commonItems.values()) {
                 requiredItems.remove(item.getName());
             }
 
-            if(requiredItems.isEmpty()) {
+            if (requiredItems.isEmpty()) {
                 this.combineRecipe(recipe);
             }
         }
