@@ -3,7 +3,9 @@ package onlineShop.models.products.peripherals;
 
 import onlineShop.models.BaseProduct;
 
-public abstract class BasePeripheral extends BaseProduct {
+import static onlineShop.common.constants.OutputMessages.PERIPHERAL_TO_STRING;
+
+public abstract class BasePeripheral extends BaseProduct implements Peripheral{
 
     private String connectionType;
 
@@ -19,13 +21,15 @@ public abstract class BasePeripheral extends BaseProduct {
         this.connectionType = connectionType;
     }
 
+    @Override
     public String getConnectionType() {
+
         return connectionType;
     }
 
     @Override
     public String toString() {
 
-        return super.toString() + String.format(" Connection Type: %s", this.connectionType);
+        return super.toString() + String.format(PERIPHERAL_TO_STRING, this.getConnectionType());
     }
 }
