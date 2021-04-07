@@ -2,6 +2,7 @@ package onlineShop.models;
 //created by J.M.
 
 import static onlineShop.common.constants.ExceptionMessages.*;
+import static onlineShop.common.constants.OutputMessages.PRODUCT_TO_STRING;
 
 public abstract class BaseProduct implements Product {
 
@@ -12,11 +13,11 @@ public abstract class BaseProduct implements Product {
     private double overallPerformance;
 
     protected BaseProduct(int id, String manufacturer, String model, double price, double overallPerformance) {
-        this.id = id;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.price = price;
-        this.overallPerformance = overallPerformance;
+        this.setId(id);
+        this.setManufacturer(manufacturer);
+        this.setModel(model);
+        this.setPrice(price);
+        this.setOverallPerformance(overallPerformance);
     }
 
     private void setId(int id) {
@@ -81,10 +82,10 @@ public abstract class BaseProduct implements Product {
 
     @Override
     public String toString() {
-        return String.format("Overall Performance: %f. Price: %f - %s: %s %s (Id: %d)"
-                , getOverallPerformance(),
+        return String.format(PRODUCT_TO_STRING,
+                getOverallPerformance(),
                 getPrice(),
-                getClass().getSimpleName(),
+                this.getClass().getSimpleName(),
                 getManufacturer(),
                 getModel(),
                 getId());
