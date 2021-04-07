@@ -3,7 +3,7 @@ package onlineShop.models.products.components;
 
 public class VideoCard extends BaseComponent{
 
-    private static double multiplier = 1.25;
+    private static double multiplier = 1.15;
 
     public VideoCard(int id,
                      String manufacturer,
