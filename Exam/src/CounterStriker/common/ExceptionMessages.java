@@ -2,6 +2,7 @@ package CounterStriker.common;
 //created by J.M.
 
 public class ExceptionMessages {
+
     public static final String INVALID_PLAYER_NAME = "Username cannot be null or empty.";
 
     public static final String INVALID_PLAYER_HEALTH = "Player health cannot be below 0.";
