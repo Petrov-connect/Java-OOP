@@ -13,6 +13,7 @@ import aquarium.models.fish.FreshwaterFish;
 import aquarium.models.fish.SaltwaterFish;
 import aquarium.models.fish.Fish;
 import aquarium.repositories.DecorationRepository;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -84,8 +85,7 @@ public class ControllerImpl implements Controller {
             throw new IllegalArgumentException(String.format(ExceptionMessages.NO_DECORATION_FOUND, decorationType));
         }
 
-        Aquarium aquarium = this.aquariums.get(aquariumName);
-        aquarium.addDecoration(findByType);
+        this.aquariums.get(aquariumName).addDecoration(findByType);
         this.decorationRepository.remove(findByType);
 
         return String.format(ConstantMessages.SUCCESSFULLY_ADDED_DECORATION_IN_AQUARIUM, decorationType, aquariumName);
@@ -134,10 +134,10 @@ public class ControllerImpl implements Controller {
 
         Aquarium aquarium = this.aquariums.get(aquariumName);
 
-        double sumFishByPrices = aquarium.getFish().stream().mapToDouble(Fish::getPrice).sum();
-        double sumDecorationsByPrice = aquarium.getDecorations().stream().mapToDouble(Decoration::getPrice).sum();
-
-        return String.format(ConstantMessages.VALUE_AQUARIUM, aquariumName, sumFishByPrices + sumDecorationsByPrice);
+        return String.format(ConstantMessages.VALUE_AQUARIUM,
+                aquariumName,
+                aquarium.getFish().stream().mapToDouble(Fish::getPrice).sum()
+                        + aquarium.getDecorations().stream().mapToDouble(Decoration::getPrice).sum());
 
     }
 
