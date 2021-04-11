@@ -1,13 +1,14 @@
-package viceCity.repositories.interfaces;
+package viceCity.repositories;
 //created by J.M.
 
 import viceCity.models.guns.Gun;
+import viceCity.repositories.interfaces.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class GunRepository implements Repository{
+public class GunRepository implements Repository<Gun> {
 
     private final Collection<Gun> models;
 
@@ -16,22 +17,22 @@ public class GunRepository implements Repository{
     }
 
     @Override
-    public Collection getModels() {
+    public Collection<Gun> getModels() {
         return Collections.unmodifiableCollection(this.models);
     }
 
     @Override
-    public void add(Object model) {
-        this.models.add((Gun) model);
+    public void add(Gun model) {
+        this.models.add(model);
     }
 
     @Override
-    public boolean remove(Object model) {
+    public boolean remove(Gun model) {
         return this.models.remove(model);
     }
 
     @Override
-    public Object find(String name) {
+    public Gun find(String name) {
 
         return this.models.stream().filter(e->e.getName().equals(name)).findFirst().orElse(null);
     }
