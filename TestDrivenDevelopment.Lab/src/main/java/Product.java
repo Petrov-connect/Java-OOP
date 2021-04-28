@@ -1,4 +1,4 @@
-package main.java;
+//created by J.M.
 
 public class Product implements Comparable<Product> {
 
