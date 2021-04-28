@@ -1,68 +1,77 @@
-package main.java;
+//created by J.M.
 
-import jdk.jshell.spi.ExecutionControl;
-
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class Instock implements ProductStock {
 
-    @Override
-    public int getCount() {
-        throw new UnsupportedOperationException();
+    private Map<String,Product> products;
+
+    public Instock(){
+        this.products = new HashMap<>();
     }
 
     @Override
-    public boolean contains(Product product) {
-        throw new UnsupportedOperationException();
+    public Integer getCount() {
+        return products.size();
+    }
+
+    @Override
+    public Boolean contains(Product product) {
+        return this.products.containsKey(product.getLabel());
     }
 
     @Override
     public void add(Product product) {
-        throw new UnsupportedOperationException();
+        if(!contains(product)){
+            this.products.put(product.getLabel(),product);
+
+        }
     }
 
     @Override
     public void changeQuantity(String product, int quantity) {
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public Product find(int index) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Product findByLabel(String label) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterable<Product> findFirstByAlphabeticalOrder(int count) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterable<Product> findAllInRange(double lo, double hi) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterable<Product> findAllByPrice(double price) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterable<Product> findFirstMostExpensiveProducts(int count) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterable<Product> findAllByQuantity(int quantity) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public Iterator<Product> iterator() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 }
