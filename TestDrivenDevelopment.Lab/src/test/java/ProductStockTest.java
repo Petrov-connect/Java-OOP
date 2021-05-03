@@ -62,6 +62,12 @@ public class ProductStockTest {
         assertFalse(contains);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testFindMustFailsIfIndexIsNotValid(){
 
+    }
+    @Test
+    public void testFindShouldReturnProductAtGivenIndex(){
 
+    }
 }
