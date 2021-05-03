@@ -65,14 +65,14 @@ public class ProductStockTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testFindMustFailsIfIndexIsNegative(){
+    public void testFindMustFailsIfIndexIsNegative() {
 
         instock.find(-1);
 
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testFindMustFailsIfIndexEqualsToCount(){
+    public void testFindMustFailsIfIndexEqualsToCount() {
 
         addFiveProducts();
         instock.find(instock.getCount());
@@ -80,34 +80,55 @@ public class ProductStockTest {
     }
 
     @Test
-    public void testFindShouldReturnFirstAddedProduct(){
+    public void testFindShouldReturnFirstAddedProduct() {
 
         assertFindShouldReturnCorrectProduct(0);
 
     }
 
     @Test
-    public void testFindShouldReturnLastAddedProduct(){
+    public void testFindShouldReturnLastAddedProduct() {
 
         assertFindShouldReturnCorrectProduct(4);
 
     }
 
     @Test
-    public void testFindShouldReturnCorrectProductAtGivenIndex(){
+    public void testFindShouldReturnCorrectProductAtGivenIndex() {
 
         assertFindShouldReturnCorrectProduct(2);
 
     }
 
-    private void assertFindShouldReturnCorrectProduct(int index){
+    @Test
+    public void testChangeQuantityMustUpdateQuantityValue() {
+
+        Product product = createTestProduct();
+        instock.add(product);
+        int quantityBeforeUpdate = product.getQuantity();
+        instock.changeQuantity(product.getLabel(), 10);
+        assertEquals(quantityBeforeUpdate + 10, product.getQuantity());
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testChangeQuantityMustFailWhenProductIsNotPresent() {
+
+        addFiveProducts();
+        instock.changeQuantity(createTestProduct().getLabel(),10);
+
+    }
+
+
+
+    private void assertFindShouldReturnCorrectProduct(int index) {
         addFiveProducts();
         Product product = instock.find(index);
         assertNotNull(product);
-        assertEquals("test_label_"+(index+1) ,product.getLabel());
+        assertEquals("test_label_" + (index + 1), product.getLabel());
     }
 
-    private void addFiveProducts(){
+    private void addFiveProducts() {
         instock.add(new Product("test_label_1", 100.0, 1));
         instock.add(new Product("test_label_2", 100.1, 2));
         instock.add(new Product("test_label_3", 100.2, 3));
@@ -115,7 +136,7 @@ public class ProductStockTest {
         instock.add(new Product("test_label_5", 100.4, 5));
     }
 
-    private Product createTestProduct(){
+    private Product createTestProduct() {
         return new Product("test_label", 100, 1);
     }
 }
