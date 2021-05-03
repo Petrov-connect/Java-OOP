@@ -1,5 +1,6 @@
 //created by J.M.
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class Instock implements ProductStock {
     @Override
     public Product find(int index) {
 
-        return null;
+        return new ArrayList<>(this.products.values()).get(index);
     }
 
     @Override
