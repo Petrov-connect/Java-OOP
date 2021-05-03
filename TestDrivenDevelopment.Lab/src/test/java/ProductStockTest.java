@@ -13,14 +13,18 @@ public class ProductStockTest {
     public void SetUp() {
         instock = new Instock();
     }
+    private void addFiveProducts(){
+        instock.add(new Product("test_label_1", 100.0, 1));
+        instock.add(new Product("test_label_2", 100.1, 2));
+        instock.add(new Product("test_label_3", 100.2, 3));
+        instock.add(new Product("test_label_4", 100.3, 4));
+        instock.add(new Product("test_label_5", 100.4, 5));
+    }
 
     @Test
     public void testGetCountMustReturnCorrectCountOfAddedProducts() {
-
-        instock.add(new Product("test_label_1", 100, 1));
-        instock.add(new Product("test_label_2", 100, 1));
-
-        assertEquals(Integer.valueOf(2), instock.getCount());
+        addFiveProducts();
+        assertEquals(Integer.valueOf(5), instock.getCount());
     }
 
     @Test
@@ -69,16 +73,47 @@ public class ProductStockTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testFindMustFailsIfIndexIsNotValid(){
+    public void testFindMustFailsIfIndexIsNegative(){
 
-        instock.find(3);
+        instock.find(-1);
 
     }
-    @Test
-    public void testFindShouldReturnProductAtGivenIndex(){
 
-        instock.add(new Product("test_label_1", 100, 1));
-        instock.add(new Product("test_label_2", 100, 1));
-        assertEquals("test_label_1",instock.find(0).getLabel());
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testFindMustFailsIfIndexEqualsToCount(){
+
+        addFiveProducts();
+        instock.find(instock.getCount());
+
+    }
+
+    @Test
+    public void testFindShouldReturnFirstAddedProduct(){
+
+        addFiveProducts();
+        Product product = instock.find(0);
+        assertNotNull(product);
+        assertEquals("test_label_1",product.getLabel());
+
+    }
+
+    @Test
+    public void testFindShouldReturnLastAddedProduct(){
+
+        addFiveProducts();
+        Product product = instock.find(4);
+        assertNotNull(product);
+        assertEquals("test_label_5",product.getLabel());
+
+    }
+
+    @Test
+    public void testFindShouldReturnCorrectProductAtGivenIndex(){
+
+        addFiveProducts();
+        Product product = instock.find(2);
+        assertNotNull(product);
+        assertEquals("test_label_3",product.getLabel());
+
     }
 }
