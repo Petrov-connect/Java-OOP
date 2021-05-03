@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class Instock implements ProductStock {
 
-    private Map<String,Product> products;
+    private Map<String, Product> products;
 
-    public Instock(){
+    public Instock() {
         this.products = new LinkedHashMap<>();
     }
 
@@ -25,15 +25,20 @@ public class Instock implements ProductStock {
 
     @Override
     public void add(Product product) {
-        if(!contains(product)){
-            this.products.put(product.getLabel(),product);
+        if (!contains(product)) {
+            this.products.put(product.getLabel(), product);
 
         }
     }
 
     @Override
-    public void changeQuantity(String product, int quantity) {
+    public void changeQuantity(String label, int quantity) {
 
+        if (!products.containsKey(label)) {
+            throw new IllegalArgumentException();
+        }
+        Product product = products.get(label);
+        product.setQuantity(product.getQuantity() + quantity);
     }
 
     @Override
