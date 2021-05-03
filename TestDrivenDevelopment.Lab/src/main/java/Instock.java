@@ -1,7 +1,7 @@
 //created by J.M.
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Instock implements ProductStock {
@@ -9,7 +9,7 @@ public class Instock implements ProductStock {
     private Map<String,Product> products;
 
     public Instock(){
-        this.products = new HashMap<>();
+        this.products = new LinkedHashMap<>();
     }
 
     @Override
@@ -37,6 +37,7 @@ public class Instock implements ProductStock {
 
     @Override
     public Product find(int index) {
+
         return null;
     }
 
