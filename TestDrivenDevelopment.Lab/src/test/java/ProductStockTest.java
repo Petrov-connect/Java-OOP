@@ -13,13 +13,6 @@ public class ProductStockTest {
     public void SetUp() {
         instock = new Instock();
     }
-    private void addFiveProducts(){
-        instock.add(new Product("test_label_1", 100.0, 1));
-        instock.add(new Product("test_label_2", 100.1, 2));
-        instock.add(new Product("test_label_3", 100.2, 3));
-        instock.add(new Product("test_label_4", 100.3, 4));
-        instock.add(new Product("test_label_5", 100.4, 5));
-    }
 
     @Test
     public void testGetCountMustReturnCorrectCountOfAddedProducts() {
@@ -36,7 +29,7 @@ public class ProductStockTest {
     @Test
     public void testAddMustStoreTheProductByValidatingWhitContains() {
 
-        Product product = new Product("test_label_1", 100, 1);
+        Product product = createTestProduct();
         instock.add(product);
         Boolean contains = instock.contains(product);
         assertNotNull(contains);
@@ -46,7 +39,7 @@ public class ProductStockTest {
     @Test
     public void testAddShouldNotAddSameProductTwice() {
 
-        Product product = new Product("test_label_1", 100, 1);
+        Product product = createTestProduct();
         instock.add(product);
         instock.add(product);
         Integer count = instock.getCount();
@@ -57,9 +50,8 @@ public class ProductStockTest {
     @Test
     public void testContainsMustReturnFalseWhenProductIsNotPresent() {
 
-        Product product = new Product("test_label_1", 100, 1);
-        instock.add(product);
-        Boolean contains = instock.contains(new Product("test_label", 100, 1));
+        addFiveProducts();
+        Boolean contains = instock.contains(createTestProduct());
         assertNotNull(contains);
         assertFalse(contains);
     }
@@ -67,7 +59,7 @@ public class ProductStockTest {
     @Test
     public void testContainsMustReturnFalseWhenCollectionIsEmpty() {
 
-        Boolean contains = instock.contains(new Product("test_label", 100, 1));
+        Boolean contains = instock.contains(createTestProduct());
         assertNotNull(contains);
         assertFalse(contains);
     }
@@ -90,30 +82,40 @@ public class ProductStockTest {
     @Test
     public void testFindShouldReturnFirstAddedProduct(){
 
-        addFiveProducts();
-        Product product = instock.find(0);
-        assertNotNull(product);
-        assertEquals("test_label_1",product.getLabel());
+        assertFindShouldReturnCorrectProduct(0);
 
     }
 
     @Test
     public void testFindShouldReturnLastAddedProduct(){
 
-        addFiveProducts();
-        Product product = instock.find(4);
-        assertNotNull(product);
-        assertEquals("test_label_5",product.getLabel());
+        assertFindShouldReturnCorrectProduct(4);
 
     }
 
     @Test
     public void testFindShouldReturnCorrectProductAtGivenIndex(){
 
-        addFiveProducts();
-        Product product = instock.find(2);
-        assertNotNull(product);
-        assertEquals("test_label_3",product.getLabel());
+        assertFindShouldReturnCorrectProduct(2);
 
+    }
+
+    private void assertFindShouldReturnCorrectProduct(int index){
+        addFiveProducts();
+        Product product = instock.find(index);
+        assertNotNull(product);
+        assertEquals("test_label_"+(index+1) ,product.getLabel());
+    }
+
+    private void addFiveProducts(){
+        instock.add(new Product("test_label_1", 100.0, 1));
+        instock.add(new Product("test_label_2", 100.1, 2));
+        instock.add(new Product("test_label_3", 100.2, 3));
+        instock.add(new Product("test_label_4", 100.3, 4));
+        instock.add(new Product("test_label_5", 100.4, 5));
+    }
+
+    private Product createTestProduct(){
+        return new Product("test_label", 100, 1);
     }
 }
