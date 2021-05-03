@@ -16,6 +16,7 @@ public class ProductStockTest {
 
     @Test
     public void testGetCountMustReturnCorrectCountOfAddedProducts() {
+
         instock.add(new Product("test_label_1", 100, 1));
         instock.add(new Product("test_label_2", 100, 1));
 
@@ -24,11 +25,13 @@ public class ProductStockTest {
 
     @Test
     public void testGetCountMustReturnZeroWhenCollectionIsEmpty() {
+
         assertEquals(Integer.valueOf(0), instock.getCount());
     }
 
     @Test
     public void testAddMustStoreTheProductByValidatingWhitContains() {
+
         Product product = new Product("test_label_1", 100, 1);
         instock.add(product);
         Boolean contains = instock.contains(product);
@@ -38,6 +41,7 @@ public class ProductStockTest {
 
     @Test
     public void testAddShouldNotAddSameProductTwice() {
+
         Product product = new Product("test_label_1", 100, 1);
         instock.add(product);
         instock.add(product);
@@ -48,6 +52,7 @@ public class ProductStockTest {
 
     @Test
     public void testContainsMustReturnFalseWhenProductIsNotPresent() {
+
         Product product = new Product("test_label_1", 100, 1);
         instock.add(product);
         Boolean contains = instock.contains(new Product("test_label", 100, 1));
@@ -57,6 +62,7 @@ public class ProductStockTest {
 
     @Test
     public void testContainsMustReturnFalseWhenCollectionIsEmpty() {
+
         Boolean contains = instock.contains(new Product("test_label", 100, 1));
         assertNotNull(contains);
         assertFalse(contains);
@@ -65,9 +71,14 @@ public class ProductStockTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void testFindMustFailsIfIndexIsNotValid(){
 
+        instock.find(3);
+
     }
     @Test
     public void testFindShouldReturnProductAtGivenIndex(){
 
+        instock.add(new Product("test_label_1", 100, 1));
+        instock.add(new Product("test_label_2", 100, 1));
+        assertEquals("test_label_1",instock.find(0).getLabel());
     }
 }
