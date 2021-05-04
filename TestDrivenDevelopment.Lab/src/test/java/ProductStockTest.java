@@ -3,6 +3,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ProductStockTest {
@@ -119,7 +121,98 @@ public class ProductStockTest {
 
     }
 
+    @Test
+    public void testFindByLabelMustReturnCorrectProductByGivenLabel(){
 
+        addFiveProducts();
+        Product product = createTestProduct();
+        String label = product.getLabel();
+        instock.add(product);
+        assertEquals(product,instock.findByLabel(label));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindByLabelMustFailWhenLabelNotExist(){
+
+        addFiveProducts();
+        instock.findByLabel("test_label");
+
+    }
+
+    @Test
+    public void testFindFirstByAlphabeticalOrderShouldReturnCorrectNumbersOfSortedProducts(){
+
+        addFiveProducts();
+        Product product = createTestProduct();
+        instock.add(product);
+        List<Product> productList = (List<Product>) instock.findFirstByAlphabeticalOrder(4);
+        assertEquals(4,productList.size());
+        assertEquals("test_label",productList.get(0).getLabel());
+        assertEquals("test_label_1",productList.get(1).getLabel());
+        assertEquals("test_label_2",productList.get(2).getLabel());
+        assertEquals("test_label_3",productList.get(3).getLabel());
+
+    }
+
+    @Test
+    public void testFindFirstByAlphabeticalOrderShouldReturnEmptyCollectionIfThePassedArgumentIsMoreThanAddProducts(){
+
+        addFiveProducts();
+        List<Product> productList = (List<Product>) instock.findFirstByAlphabeticalOrder(6);
+        assertEquals(0,productList.size());
+    }
+
+    @Test
+    public void testFindFirstByAlphabeticalOrderShouldReturnEmptyCollectionIfThePassedArgumentIsLessOrEqualsZero(){
+
+        addFiveProducts();
+        List<Product> productList = (List<Product>) instock.findFirstByAlphabeticalOrder(0);
+        assertEquals(0,productList.size());
+    }
+
+    @Test
+    public void testFindAllInRangeShouldReturnEmptyCollectionIfNoSuchProductWhitPriceInThatRange(){
+
+        addFiveProducts();
+        List<Product>products = (List<Product>) instock.findAllInRange(10,11);
+        assertEquals(0,products.size());
+
+    }
+
+    @Test
+    public void testFindAllInRangeShouldReturnAllProductsWhitPriceInGivenRangeSortedDescending(){
+
+        addFiveProducts();
+        double expectedFirst = 100.3;
+        double expectedSecond = 100.2;
+        List<Product>products = (List<Product>) instock.findAllInRange(100.1,100.3);
+        assertEquals(2,products.size());
+        assertEquals(expectedFirst,products.get(0).getPrice(),0.0);
+        assertEquals(expectedSecond,products.get(1).getPrice(),0.0);
+
+    }
+
+    @Test
+    public void testFindAllByPriceShouldReturnAllProductsWhitGivenPrice(){
+
+        addFiveProducts();
+        Product product = createTestProduct();
+        double price = product.getPrice();
+        instock.add(product);
+        instock.add(product);
+        List<Product>products= (List<Product>) instock.findAllByPrice(price);
+
+    }
+
+    @Test
+    public void testFindAllByPriceShouldReturnEmptyCollectionIfNotSuchProductWhitGivenPrice(){
+
+        addFiveProducts();
+        List<Product>products = (List<Product>) instock.findAllByPrice(10);
+        assertEquals(0,products.size());
+
+    }
 
     private void assertFindShouldReturnCorrectProduct(int index) {
         addFiveProducts();
@@ -137,6 +230,6 @@ public class ProductStockTest {
     }
 
     private Product createTestProduct() {
-        return new Product("test_label", 100, 1);
+        return new Product("test_label", 99.9, 1);
     }
 }
