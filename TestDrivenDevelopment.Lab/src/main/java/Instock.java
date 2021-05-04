@@ -1,9 +1,7 @@
 //created by J.M.
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Instock implements ProductStock {
 
@@ -49,17 +47,28 @@ public class Instock implements ProductStock {
 
     @Override
     public Product findByLabel(String label) {
-        return null;
+
+        if (!products.containsKey(label)) {
+            throw new IllegalArgumentException();
+        }
+        return products.get(label);
     }
 
     @Override
     public Iterable<Product> findFirstByAlphabeticalOrder(int count) {
-        return null;
+        if (count > products.size() || count <= 0) {
+            return new ArrayList<>();
+        }
+        return products.values().stream().sorted(Comparator.comparing(Product::getLabel)).limit(count)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findAllInRange(double lo, double hi) {
-        return null;
+
+        return products.values().stream().filter(e -> e.getPrice() > lo && e.getPrice() <= hi)
+                .sorted(Comparator.comparingDouble(Product::getPrice).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override
