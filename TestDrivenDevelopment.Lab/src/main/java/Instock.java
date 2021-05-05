@@ -73,7 +73,7 @@ public class Instock implements ProductStock {
 
     @Override
     public Iterable<Product> findAllByPrice(double price) {
-        return null;
+        return products.values().stream().filter(e->e.getPrice()==price).collect(Collectors.toList());
     }
 
     @Override
@@ -88,6 +88,7 @@ public class Instock implements ProductStock {
 
     @Override
     public Iterator<Product> iterator() {
-        return null;
+
+        return products.values().iterator();
     }
 }
