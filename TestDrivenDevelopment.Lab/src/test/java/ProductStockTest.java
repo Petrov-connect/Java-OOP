@@ -159,16 +159,16 @@ public class ProductStockTest {
     public void testFindFirstByAlphabeticalOrderShouldReturnEmptyCollectionIfThePassedArgumentIsMoreThanAddProducts(){
 
         addFiveProducts();
-        List<Product> productList = (List<Product>) instock.findFirstByAlphabeticalOrder(6);
-        assertEquals(0,productList.size());
+        List<Product> products = (List<Product>) instock.findFirstByAlphabeticalOrder(6);
+        assertTrue(products.isEmpty());
     }
 
     @Test
     public void testFindFirstByAlphabeticalOrderShouldReturnEmptyCollectionIfThePassedArgumentIsLessOrEqualsZero(){
 
         addFiveProducts();
-        List<Product> productList = (List<Product>) instock.findFirstByAlphabeticalOrder(0);
-        assertEquals(0,productList.size());
+        List<Product> products = (List<Product>) instock.findFirstByAlphabeticalOrder(0);
+        assertTrue(products.isEmpty());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class ProductStockTest {
 
         addFiveProducts();
         List<Product>products = (List<Product>) instock.findAllInRange(10,11);
-        assertEquals(0,products.size());
+        assertTrue(products.isEmpty());
 
     }
 
@@ -200,9 +200,9 @@ public class ProductStockTest {
         Product product = createTestProduct();
         double price = product.getPrice();
         instock.add(product);
-        instock.add(product);
         List<Product>products= (List<Product>) instock.findAllByPrice(price);
-
+        assertEquals(2,products.size());
+        assertTrue(products.stream().allMatch(e->e.getPrice()==price));
     }
 
     @Test
@@ -210,9 +210,16 @@ public class ProductStockTest {
 
         addFiveProducts();
         List<Product>products = (List<Product>) instock.findAllByPrice(10);
-        assertEquals(0,products.size());
+        assertTrue(products.isEmpty());
 
     }
+
+    @Test
+    public void testFindFirstMostExpensiveProductsMustReturnCorrectNumbersOfProducts(){
+
+    }
+
+
 
     private void assertFindShouldReturnCorrectProduct(int index) {
         addFiveProducts();
@@ -230,6 +237,6 @@ public class ProductStockTest {
     }
 
     private Product createTestProduct() {
-        return new Product("test_label", 99.9, 1);
+        return new Product("test_label", 100.0, 1);
     }
 }
